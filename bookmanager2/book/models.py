@@ -26,6 +26,8 @@ class BookInfo(models.Model):
     class Meta:
         db_table = 'bookinfo'
         verbose_name = '书籍管理' # admin站点使用
+    def __str__(self):
+        return self.name
 
 class PeopleInfo(models.Model):
     name = models.CharField(max_length=10, unique=True)
@@ -50,3 +52,5 @@ class PeopleInfo(models.Model):
     class Meta:
         db_table = 'peopleinfo'
         verbose_name = '人物信息'
+    def __str__(self):
+        return self.name
