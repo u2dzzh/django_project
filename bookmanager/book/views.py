@@ -14,4 +14,13 @@ from django.http import HttpResponse
 
 # 期望用户输入http:127.0.0.1/8000/index 来访问视图函数
 def index(request):
-    return HttpResponse('ok')
+    # return HttpResponse('ok')
+    """
+    render() 就是渲染模板  其三个参数
+    request,  请求
+    template_name,  模板名字
+    context=None,
+    :param request:
+    :return:
+    """
+    return render(request, "book/index.html")

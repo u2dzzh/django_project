@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -23,9 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)n%^v*ov0tnb%y#70g)3ik&x0kot#)^68c**-czw6iz+@d$s@i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 调试模式, 开发的时候 需要看到更多的信息, 因此开启
+# 上线的时候, DEBUG模式关闭
 DEBUG = True
-
-ALLOWED_HOSTS = []
+# 允许以什么样的形式访问我们的项目 , 默认为127.0.0.1
+# 上线时需指定域名
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,11 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bookmanager.urls'
-
+# 和模板配置相关
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],# 告知系统模板文件放在哪里
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
