@@ -73,3 +73,10 @@ def get_session(request):
     name = request.session.get('name')
     s = f"{user_id}__{name}"
     return HttpResponse(s)
+
+from django.views import View
+class LoginView(View):
+    def get(self, request):
+        return HttpResponse('get get get')
+    def post(self, request):
+        return HttpResponse('post post post')
