@@ -48,3 +48,28 @@ def get_cookies(request):
     # 使用COOKIES方法  返回字典数据
     name = request.COOKIES['name']
     return HttpResponse(name)
+
+"""
+第一次请求http:8.130.4.218:8000/set_session/?name=tom  我们在服务器端设置session信息
+服务器同时会生成一个sessionid的cookie信息
+浏览器接收到这个信息后, 会把cookie数据保存起来
+
+第二次及之后的请求, 都会携带这个sessionid  服务器会验证这个sessionid, 验证没有问题会读取相关信息, 实现业务逻辑
+"""
+def set_session(request):
+    # 1.模拟获取用户信息
+    name = request.GET.get('name')
+
+    # 2. 设置session信息
+    user_id = 1
+    request.session['user_id'] = user_id
+    request.session['name'] = name
+    return HttpResponse("set_session")
+
+def get_session(request):
+    # 若使用 request.session['name'] 若为空值会报错
+    # 因此对于字典类型使用 get 即使有空值也不会报错
+    user_id = request.session.get('user_id')
+    name = request.session.get('name')
+    s = f"{user_id}__{name}"
+    return HttpResponse(s)

@@ -1,6 +1,7 @@
 from django.urls import path
 
 from book.views import shop, register, json, set_cookies, get_cookies
+from book.views import set_session, get_session
 from django.urls import converters
 
 # 1. 定义转换器
@@ -25,5 +26,7 @@ urlpatterns = [
     path('register/', register),
     path('json/', json),
     path('set_cookies/', set_cookies),
-    path('get_cookies/', get_cookies)
+    path('get_cookies/', get_cookies),
+    path('set_session/', set_session),
+    path('get_session/', get_session),
 ]
